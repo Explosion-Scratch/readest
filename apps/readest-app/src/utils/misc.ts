@@ -70,6 +70,7 @@ export const getUserLocale = (lang: string): string | undefined => {
 // when possible please use appService.isIOSApp || getOSPlatform() === 'ios'
 // to check if the app is running on iOS
 export const getOSPlatform = (): OsPlatform => {
+  if (!globalThis?.navigator?.userAgent){return 'unknown';}
   const userAgent = navigator.userAgent.toLowerCase();
 
   if (/iphone|ipad|ipod/.test(userAgent)) return 'ios';
